@@ -537,10 +537,19 @@ var usMap = {
 };
 
 fetch('http://localhost:3000/lae/v1/mapinfo')
-  .then(response => response.text())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(data => {
-    // Evaluate the response as JavaScript code
-    eval(data);
+    const { vol_states, ballot_states, petition_states, write_states, dead_states } = data;
+    console.log('Vol States:', vol_states);
+    console.log('Ballot States:', ballot_states);
+    console.log('Petition States:', petition_states);
+    console.log('Write States:', write_states);
+    console.log('Dead States:', dead_states);
   })
   .catch(error => console.error('Error:', error));
 
