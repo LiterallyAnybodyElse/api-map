@@ -541,7 +541,7 @@ var usMap = {
 
 async function fetchData() {
   try {
-    const response = await fetch('http://localhost:3000/lae/v1/mapinfo');
+    const response = await fetch('http://192.155.95.215:3000/lae/v1/mapinfo');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -568,8 +568,6 @@ async function fetchData() {
 // Main function to control the flow
 async function main() {
   await fetchData();
-  wait(5 * 1000).then(() =>
-    console.log("waited for 5 seconds - if you are a dev reach out to me on discord to help me optimize this, p.fr / 858937749444493332"));
   // draw map
   var $map_container = $("#map-container");
   var map_ratio = .6;
