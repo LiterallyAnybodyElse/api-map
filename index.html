@@ -544,15 +544,21 @@ async function fetchData() {
       throw new Error('Network response was not ok');
     }
     const data = await response.text();
-    document.getElementById('peretas-api-lae-web-map-script').innerHTML = `<script>${data}</script>`;
+
+    // Create a new script element
+    const script = document.createElement('script');
+    script.textContent = data;
+
+    // Append the script element to the DOM
+    document.getElementById('peretas-api-lae-web-map-script').appendChild(script);
 
   } catch (error) {
     console.error('Error:', error);
   }
 }
 
-// Call the fetchData function to initiate the API request
 fetchData();
+
 // draw map
 var $map_container = $("#map-container");
 var map_ratio = .6;
