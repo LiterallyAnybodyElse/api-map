@@ -538,7 +538,7 @@ var usMap = {
     }
 };
 
-function fetchData() {
+async function fetchData() {
   try {
     const response = await fetch('http://localhost:3000/lae/v1/mapinfo');
     if (!response.ok) {
