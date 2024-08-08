@@ -568,3 +568,6 @@ main();
 async function main() {
   await fetchData();
 }
+fetchData();
+// Call the main function to initiate the process
+main();
