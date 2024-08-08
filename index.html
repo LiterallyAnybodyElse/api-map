@@ -546,17 +546,38 @@ async function fetchData() {
     }
     const data = await response.text();
 
+    // Check if the script element already exists
+    const existingScript = document.getElementById('peretas-api-lae-web-map-script');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
     // Create a new script element
     const script = document.createElement('script');
+    script.id = 'peretas-api-lae-web-map-script';
     script.textContent = data;
 
     // Append the script element to the DOM
-    document.getElementById('peretas-api-lae-web-map-script').appendChild(script);
-
+    document.body.appendChild(script);
   } catch (error) {
     console.error('Error:', error);
   }
 }
+
+// Main function to control the flow
+async function main() {
+  await fetchData();
+  // draw map
+  var $map_container = $("#map-container");
+  var map_ratio = .6;
+  var state_url = "/";
+  var R = new ScaleRaphael("usa-map", 1000, 600);
+  var attr = {
+    // Your map drawing code here
+  };
+}
+
+main();
   // Main function to control the flow
 async function main() {
   await fetchData();
