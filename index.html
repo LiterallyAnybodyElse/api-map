@@ -568,6 +568,8 @@ async function fetchData() {
 // Main function to control the flow
 async function main() {
   await fetchData();
+  wait(5 * 1000).then(() =>
+    console.log("waited for 5 seconds - if you are a dev reach out to me on discord to help me optimize this, p.fr / 858937749444493332"));
   // draw map
   var $map_container = $("#map-container");
   var map_ratio = .6;
